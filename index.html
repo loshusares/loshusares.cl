@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Club Deportivo Los Húsares – Santa María, San Felipe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --negro:   #0a0a0a;
+  --negro2:  #111111;
+  --negro3:  #1a1a1a;
+  --morado:  #6B3FA0;
+  --morado2: #4A2870;
+  --morado3: #8B5FBF;
+  --blanco:  #FFFFFF;
+  --gris1:   #888888;
+  --gris2:   #444444;
+  --gris3:   #222222;
+  --amarillo:#F5C518;
+  --rojo:    #E8253A;
+  --fd: 'Barlow Condensed', sans-serif;
+  --fb: 'Barlow', sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--negro);color:var(--blanco);font-family:var(--fb);overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+img{display:block;}
+
+/* ── TOP BAR ── */
+.topbar{
+  background:var(--morado2);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2rem;height:36px;font-family:var(--fd);
+  font-size:0.72rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;
+}
+.topbar-left{display:flex;gap:1.5rem;opacity:0.7;}
+.topbar-right{display:flex;gap:1rem;align-items:center;}
+.topbar-rr a{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:24px;height:24px;opacity:0.6;transition:opacity 0.2s;
+}
+.topbar-rr a:hover{opacity:1;}
+.topbar-rr{display:flex;gap:0.2rem;}
+
+/* ── NAVBAR ── */
+nav{
+  position:fixed;top:36px;left:0;right:0;z-index:200;
+  background:rgba(10,10,10,0.97);
+  border-bottom:1px solid rgba(255,255,255,0.07);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2rem;height:68px;
+  backdrop-filter:blur(16px);
+  transition:top 0.3s;
+}
+nav.scrolled{top:0;}
+.nav-logo{display:flex;align-items:center;gap:14px;}
+.nav-logo img{width:62px;height:62px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(107,63,160,0.6));}
+.nav-brand{font-family:var(--fd);font-weight:900;font-size:1.1rem;letter-spacing:0.06em;text-transform:uppercase;line-height:1;}
+.nav-brand span{display:block;font-size:0.6rem;font-weight:400;color:var(--gris1);letter-spacing:0.2em;margin-top:2px;}
+.nav-menu{display:flex;gap:0;}
+.nav-menu a{
+  display:block;padding:0 1.1rem;height:68px;line-height:68px;
+  font-family:var(--fd);font-weight:600;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;
+  color:rgba(255,255,255,0.6);
+  border-bottom:2px solid transparent;
+  transition:color 0.2s,border-color 0.2s;
+  white-space:nowrap;
+}
+.nav-menu a:hover,
+.nav-menu a.active{color:var(--blanco);border-bottom-color:var(--morado);}
+
+/* ── DROPDOWN ── */
+.nav-dropdown{position:relative;}
+.nav-dropdown > .nav-drop-btn{
+  display:flex;align-items:center;gap:5px;
+  padding:0 1.1rem;height:68px;
+  font-family:var(--fd);font-weight:600;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;
+  color:rgba(255,255,255,0.6);border-bottom:2px solid transparent;
+  background:none;border-top:none;border-left:none;border-right:none;
+  cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;
+}
+.nav-dropdown:hover > .nav-drop-btn{color:var(--blanco);border-bottom-color:var(--morado);}
+.nav-drop-btn svg{transition:transform 0.25s;}
+.nav-dropdown:hover .nav-drop-btn svg{transform:rotate(180deg);}
+
+.nav-drop-menu{
+  position:absolute;top:68px;left:0;
+  background:var(--negro2);
+  border:1px solid rgba(255,255,255,0.08);
+  border-top:2px solid var(--morado);
+  min-width:220px;
+  opacity:0;visibility:hidden;
+  transform:translateY(-8px);
+  transition:opacity 0.2s,transform 0.2s,visibility 0.2s;
+  z-index:300;
+  box-shadow:0 12px 32px rgba(0,0,0,0.5);
+}
+.nav-dropdown:hover .nav-drop-menu{opacity:1;visibility:visible;transform:translateY(0);}
+
+.nav-drop-menu a{
+  display:flex;align-items:center;gap:0.75rem;
+  padding:0.85rem 1.25rem;
+  font-family:var(--fd);font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+  color:rgba(255,255,255,0.65);
+  text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  transition:background 0.15s,color 0.15s,padding-left 0.15s;
+  height:auto;line-height:1.4;white-space:nowrap;
+}
+.nav-drop-menu a:last-child{border-bottom:none;}
+.nav-drop-menu a:hover{background:rgba(107,63,160,0.15);color:var(--blanco);padding-left:1.6rem;}
+.nav-drop-menu a .drop-icon{font-size:1rem;flex-shrink:0;}
+.nav-drop-menu a .drop-soon{
+  margin-left:auto;font-size:0.6rem;font-weight:700;letter-spacing:0.1em;
+  background:rgba(107,63,160,0.3);color:var(--morado3);
+  padding:2px 7px;border-radius:2px;
+}
+
+/* ── HAMBURGUESA ── */
+.nav-hamburger{
+  display:none;flex-direction:column;justify-content:center;gap:5px;
+  width:40px;height:40px;background:none;border:none;cursor:pointer;padding:4px;
+}
+.nav-hamburger span{
+  display:block;width:100%;height:2px;background:rgba(255,255,255,0.8);
+  border-radius:2px;transition:transform 0.3s,opacity 0.3s;
+}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* ── MENÚ MÓVIL ── */
+.nav-mobile{
+  display:none;
+  position:fixed;top:56px;left:0;right:0;bottom:0;
+  background:rgba(5,0,15,0.97);
+  backdrop-filter:blur(12px);
+  z-index:199;
+  overflow-y:auto;
+  padding:1.5rem 1.5rem 3rem;
+  opacity:0;visibility:hidden;
+  transform:translateX(-100%);
+  transition:opacity 0.3s,transform 0.3s,visibility 0.3s;
+}
+.nav-mobile.open{opacity:1;visibility:visible;transform:translateX(0);}
+
+.mob-section{margin-bottom:2rem;}
+.mob-section-title{
+  font-family:var(--fd);font-size:0.65rem;font-weight:700;letter-spacing:0.25em;
+  text-transform:uppercase;color:var(--morado3);
+  padding-bottom:0.5rem;border-bottom:1px solid rgba(107,63,160,0.25);
+  margin-bottom:0.75rem;
+}
+.mob-link{
+  display:flex;align-items:center;gap:0.85rem;
+  padding:0.85rem 0.5rem;
+  font-family:var(--fd);font-size:1rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;
+  color:rgba(255,255,255,0.8);text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  transition:color 0.2s,padding-left 0.2s;
+}
+.mob-link:hover{color:var(--blanco);padding-left:1rem;}
+.mob-link .mob-icon{font-size:1.1rem;}
+.mob-soon{
+  margin-left:auto;font-size:0.62rem;font-weight:700;letter-spacing:0.08em;
+  background:rgba(107,63,160,0.3);color:var(--morado3);padding:2px 8px;border-radius:2px;
+}
+.mob-redes{display:flex;gap:0.75rem;margin-top:1.5rem;}
+.mob-red{
+  flex:1;display:flex;align-items:center;justify-content:center;gap:0.5rem;
+  padding:12px;border-radius:4px;
+  font-family:var(--fd);font-weight:700;font-size:0.8rem;letter-spacing:0.08em;text-transform:uppercase;
+  text-decoration:none;
+}
+.mob-red-ig{background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);color:white;}
+.mob-red-fb{background:#1877F2;color:white;}
+.nav-actions{display:flex;gap:0.75rem;align-items:center;}
+.nav-btn{
+  padding:8px 20px;
+  font-family:var(--fd);font-weight:700;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;
+  border-radius:2px;cursor:pointer;border:none;transition:background 0.2s,transform 0.15s;
+}
+.nav-btn:hover{transform:translateY(-1px);}
+.nav-btn-ig{background:var(--morado);color:white;}
+.nav-btn-ig:hover{background:var(--morado3);}
+.nav-btn-fb{background:var(--gris3);color:white;border:1px solid var(--gris2);}
+.nav-btn-fb:hover{background:var(--gris2);}
+
+/* ── BANNER PORTADA ── */
+#banner-portada{
+  width:100%;
+  margin-top:104px; /* altura navbar + topbar */
+  overflow:hidden;
+  line-height:0;
+  position:relative;
+}
+#banner-portada img{
+  width:100%;
+  height:auto;
+  display:block;
+  max-height:280px;
+  object-fit:cover;
+  object-position:center;
+}
+@media(max-width:900px){
+  #banner-portada{margin-top:60px;}
+  #banner-portada img{max-height:160px;}
+}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;
+  background:var(--negro);
+  display:flex;flex-direction:column;
+  position:relative;overflow:hidden;
+  padding-top:104px;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 70% 40%, rgba(107,63,160,0.2) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 60% at 20% 80%, rgba(74,40,112,0.15) 0%, transparent 60%),
+    var(--negro);
+}
+.hero-noise{
+  position:absolute;inset:0;opacity:0.03;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.hero-main{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;flex:1;
+  max-width:1200px;margin:0 auto;padding:3rem 2rem 2rem;width:100%;gap:2rem;
+}
+.hero-left{}
+.hero-eyebrow{
+  font-family:var(--fd);font-size:0.72rem;font-weight:600;letter-spacing:0.28em;
+  text-transform:uppercase;color:var(--morado3);margin-bottom:1.2rem;
+  display:flex;align-items:center;gap:0.75rem;
+}
+.hero-eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--morado3);}
+.hero-h1{
+  font-family:var(--fd);font-weight:900;
+  font-size:clamp(4rem,8vw,7.5rem);
+  line-height:0.88;letter-spacing:-0.01em;
+  text-transform:uppercase;color:var(--blanco);
+  margin-bottom:0.15em;
+}
+.hero-h1 .morado{color:var(--morado3);}
+.hero-slogan{
+  font-family:var(--fd);font-weight:300;font-size:clamp(1.1rem,2.5vw,1.6rem);
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:rgba(255,255,255,0.4);margin-bottom:2.5rem;
+}
+.hero-cta{display:flex;gap:0.75rem;flex-wrap:wrap;}
+.btn-morado{
+  padding:14px 32px;background:var(--morado);color:var(--blanco);
+  font-family:var(--fd);font-weight:700;font-size:0.85rem;letter-spacing:0.12em;
+  text-transform:uppercase;border:none;cursor:pointer;border-radius:2px;
+  transition:background 0.2s,transform 0.15s;display:inline-flex;align-items:center;gap:0.5rem;
+}
+.btn-morado:hover{background:var(--morado3);transform:translateY(-2px);}
+.btn-outline{
+  padding:13px 28px;background:transparent;color:var(--blanco);
+  font-family:var(--fd);font-weight:600;font-size:0.85rem;letter-spacing:0.12em;
+  text-transform:uppercase;border:1px solid rgba(255,255,255,0.25);cursor:pointer;border-radius:2px;
+  transition:border-color 0.2s,color 0.2s;display:inline-flex;align-items:center;gap:0.5rem;
+}
+.btn-outline:hover{border-color:var(--blanco);color:var(--blanco);}
+
+.hero-right{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  position:relative;
+}
+.hero-escudo-wrap{
+  position:relative;
+}
+.hero-escudo-glow{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:580px;height:580px;
+  background:radial-gradient(circle,rgba(107,63,160,0.35) 0%,transparent 70%);
+  border-radius:50%;
+}
+.hero-escudo{
+  width:420px;height:420px;object-fit:contain;
+  position:relative;z-index:1;
+  filter:drop-shadow(0 0 40px rgba(107,63,160,0.5));
+}
+.hero-tags{
+  display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;margin-top:1.5rem;
+}
+.hero-tag{
+  padding:5px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:1px;
+  font-family:var(--fd);font-size:0.7rem;font-weight:600;letter-spacing:0.15em;
+  text-transform:uppercase;color:rgba(255,255,255,0.45);
+}
+
+/* ── TICKER ── */
+.ticker{background:var(--morado2);overflow:hidden;height:42px;display:flex;align-items:center;border-top:1px solid rgba(255,255,255,0.08);}
+.ticker-label{
+  background:var(--morado);color:white;
+  font-family:var(--fd);font-weight:800;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;
+  padding:0 1.25rem;height:100%;display:flex;align-items:center;white-space:nowrap;flex-shrink:0;
+}
+.ticker-track{display:flex;animation:ticker 22s linear infinite;white-space:nowrap;}
+.ticker-item{
+  padding:0 2rem;font-family:var(--fd);font-size:0.8rem;font-weight:500;letter-spacing:0.12em;
+  text-transform:uppercase;color:rgba(255,255,255,0.75);flex-shrink:0;
+}
+.ticker-sep{color:rgba(255,255,255,0.25);padding:0 0.25rem;}
+@keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ── SECCIÓN GENÉRICA ── */
+.sec-pad{padding:5rem 2rem;}
+.ctr{max-width:1200px;margin:0 auto;}
+.sec-label{
+  font-family:var(--fd);font-size:0.7rem;font-weight:700;letter-spacing:0.28em;
+  text-transform:uppercase;color:var(--morado3);margin-bottom:0.5rem;display:flex;align-items:center;gap:0.75rem;
+}
+.sec-label::before{content:'';display:block;width:20px;height:1px;background:var(--morado3);}
+.sec-h2{
+  font-family:var(--fd);font-weight:900;font-size:clamp(2rem,5vw,3.5rem);
+  letter-spacing:0.02em;text-transform:uppercase;line-height:0.95;margin-bottom:0.6rem;
+}
+.sec-h2 .acc{color:var(--morado3);}
+.sec-sep{width:40px;height:2px;background:var(--morado);margin-bottom:2.5rem;}
+
+/* ── BANNER INAUGURACIÓN ── */
+#banner-inaug{
+  background:var(--negro2);padding:3rem 2rem;
+  border-top:3px solid var(--morado);border-bottom:3px solid var(--morado);
+  position:relative;overflow:hidden;
+}
+#banner-inaug::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(107,63,160,0.15) 0%,transparent 70%);
+  pointer-events:none;
+}
+.inaug-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:3rem;}
+.inaug-img-wrap{position:relative;flex-shrink:0;}
+.inaug-img{width:260px;border-radius:6px;box-shadow:0 0 40px rgba(107,63,160,0.5);display:block;transition:transform 0.3s;}
+.inaug-img:hover{transform:scale(1.03);}
+.inaug-badge{
+  position:absolute;top:-12px;left:-12px;
+  background:var(--morado);color:white;
+  font-family:var(--fd);font-weight:800;font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;
+  padding:6px 14px;border-radius:2px;
+  animation:pulse-badge 2s ease-in-out infinite;
+}
+@keyframes pulse-badge{0%,100%{box-shadow:0 4px 12px rgba(107,63,160,0.5);}50%{box-shadow:0 4px 28px rgba(107,63,160,0.95);}}
+.inaug-tag{font-family:var(--fd);font-size:0.7rem;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--morado3);margin-bottom:0.5rem;display:flex;align-items:center;gap:0.6rem;}
+.inaug-tag::before{content:'';display:block;width:18px;height:1px;background:var(--morado3);}
+.inaug-h{font-family:var(--fd);font-weight:900;font-size:clamp(1.8rem,4vw,3rem);letter-spacing:0.03em;text-transform:uppercase;color:var(--blanco);line-height:0.95;margin-bottom:0.5rem;}
+.inaug-h .acc{color:var(--morado3);}
+.inaug-desc{font-size:0.95rem;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:1.5rem;max-width:520px;}
+.inaug-data{display:flex;gap:1.2rem;flex-wrap:wrap;margin-bottom:1.5rem;}
+.inaug-dato{display:flex;align-items:center;gap:0.65rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:0.65rem 1.1rem;border-radius:3px;}
+.inaug-dato-ic{font-size:1rem;}
+.inaug-dato-tx strong{display:block;font-family:var(--fd);font-weight:700;font-size:0.92rem;letter-spacing:0.06em;color:var(--amarillo);}
+.inaug-dato-tx small{font-size:0.68rem;font-family:var(--fd);letter-spacing:0.1em;text-transform:uppercase;color:var(--gris1);}
+.inaug-slogan{font-family:var(--fd);font-weight:700;font-size:0.95rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);}
+.inaug-slogan span{color:var(--morado3);}
+@media(max-width:900px){
+  .inaug-inner{grid-template-columns:1fr;text-align:center;}
+  .inaug-img-wrap{margin:0 auto;}
+  .inaug-tag,.inaug-data{justify-content:center;}
+  .inaug-tag::before{display:none;}
+}
+
+/* ── PARTIDO BANNER ── */
+#partidos{background:var(--negro2);}
+.partido-card{
+  background:var(--negro3);border:1px solid rgba(255,255,255,0.06);
+  border-radius:4px;overflow:hidden;
+}
+.partido-head{
+  background:linear-gradient(135deg,var(--morado2),var(--negro3));
+  padding:1rem 1.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.partido-comp{
+  font-family:var(--fd);font-size:0.68rem;font-weight:700;letter-spacing:0.2em;
+  text-transform:uppercase;color:rgba(255,255,255,0.5);
+}
+.partido-fecha{
+  font-family:var(--fd);font-size:0.72rem;font-weight:600;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--amarillo);
+}
+.partido-body{
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+  padding:2rem 1.5rem;gap:1.5rem;
+}
+.eq{display:flex;flex-direction:column;align-items:center;gap:0.75rem;}
+.eq-escudo{
+  width:80px;height:80px;object-fit:contain;
+  filter:drop-shadow(0 4px 12px rgba(0,0,0,0.5));
+}
+.eq-placeholder{
+  width:80px;height:80px;border-radius:50%;
+  background:var(--gris3);border:2px solid var(--gris2);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--fd);font-weight:800;font-size:1.4rem;color:var(--gris1);
+}
+.eq-nombre{
+  font-family:var(--fd);font-weight:800;font-size:1rem;letter-spacing:0.04em;
+  text-transform:uppercase;text-align:center;line-height:1.1;
+}
+.eq-nombre.local{color:var(--morado3);}
+.vs-box{text-align:center;}
+.vs-txt{
+  font-family:var(--fd);font-weight:900;font-size:2.2rem;letter-spacing:0.05em;
+  color:rgba(255,255,255,0.1);display:block;margin-bottom:0.25rem;
+}
+.partido-foot{
+  padding:0.9rem 1.5rem;background:rgba(0,0,0,0.3);
+  display:flex;gap:2rem;flex-wrap:wrap;justify-content:center;
+  border-top:1px solid rgba(255,255,255,0.05);
+}
+.pf-item{display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;}
+.pf-icon{font-size:0.9rem;}
+.pf-txt strong{
+  font-family:var(--fd);font-weight:700;letter-spacing:0.05em;color:var(--amarillo);font-size:0.9rem;
+}
+.pf-txt small{display:block;font-size:0.7rem;font-family:var(--fd);letter-spacing:0.1em;text-transform:uppercase;color:var(--gris1);}
+.series-row{display:flex;flex-wrap:wrap;gap:0.4rem;justify-content:center;margin-top:0.4rem;}
+.s-chip{
+  padding:3px 10px;border:1px solid rgba(107,63,160,0.4);
+  font-family:var(--fd);font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--morado3);background:rgba(107,63,160,0.08);border-radius:1px;
+}
+
+/* ── NOSOTROS ── */
+#nosotros{background:var(--negro);}
+.nos-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.nos-text p{font-size:1rem;color:rgba(255,255,255,0.55);line-height:1.85;margin-bottom:1.1rem;}
+.kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.06);margin-top:2.5rem;border:1px solid rgba(255,255,255,0.06);}
+.kpi{padding:1.5rem 1rem;background:var(--negro);text-align:center;}
+.kpi-n{font-family:var(--fd);font-weight:900;font-size:2.5rem;color:var(--morado3);line-height:1;}
+.kpi-l{font-family:var(--fd);font-size:0.68rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--gris1);margin-top:0.3rem;}
+.nos-visual{position:relative;display:flex;align-items:center;justify-content:center;}
+.nos-bg-txt{
+  position:absolute;font-family:var(--fd);font-weight:900;font-size:11rem;
+  color:rgba(255,255,255,0.02);letter-spacing:-0.05em;text-transform:uppercase;white-space:nowrap;
+  pointer-events:none;user-select:none;
+}
+.nos-escudo{width:420px;height:420px;object-fit:contain;position:relative;z-index:1;filter:drop-shadow(0 0 60px rgba(107,63,160,0.4));}
+.nos-slogan{
+  position:relative;z-index:1;margin-top:1.5rem;text-align:center;
+  font-family:var(--fd);font-weight:700;font-size:1rem;letter-spacing:0.15em;
+  text-transform:uppercase;color:rgba(255,255,255,0.3);
+  border-top:1px solid rgba(255,255,255,0.08);padding-top:1.25rem;
+}
+.nos-slogan span{color:var(--morado3);}
+
+/* ── SERIES ── */
+#series{background:var(--negro2);}
+.series-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.06);}
+.serie-box{
+  background:var(--negro2);
+  transition:background 0.2s;cursor:default;
+  border-bottom:2px solid transparent;
+  overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.serie-box:hover{background:rgba(107,63,160,0.1);border-bottom-color:var(--morado);}
+.serie-foto{
+  width:100%;aspect-ratio:16/9;object-fit:cover;
+  display:block;
+  filter:brightness(0.75);
+  transition:filter 0.3s;
+}
+.serie-box:hover .serie-foto{filter:brightness(0.9);}
+.serie-foto-placeholder{
+  width:100%;aspect-ratio:16/9;
+  background:var(--negro3);
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:0.4rem;
+  color:rgba(255,255,255,0.12);
+  font-family:var(--fd);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;
+}
+.serie-foto-placeholder svg{opacity:0.15;}
+.serie-content{padding:1.25rem 1.25rem 1.5rem;}
+.serie-ic{font-size:1.4rem;margin-bottom:0.5rem;}
+.serie-nm{
+  font-family:var(--fd);font-weight:800;font-size:1.05rem;letter-spacing:0.05em;
+  text-transform:uppercase;color:var(--blanco);margin-bottom:0.25rem;
+}
+.serie-ds{font-size:0.82rem;color:var(--gris1);}
+
+/* ── DIRECTIVA ORGANIGRAMA ── */
+#directiva{background:var(--negro);}
+.org-wrap{display:flex;flex-direction:column;align-items:center;gap:0;}
+
+/* Nivel 1 - Presidente */
+.org-nivel1{display:flex;justify-content:center;position:relative;padding-bottom:30px;}
+.org-nivel1::after{
+  content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:2px;height:30px;background:var(--morado);
+}
+
+/* Nivel 2 - Vicepresidente */
+.org-nivel2{display:flex;justify-content:center;position:relative;padding-bottom:30px;}
+.org-nivel2::after{
+  content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:2px;height:30px;background:var(--morado);
+}
+
+/* Línea horizontal nivel 3 */
+.org-h-line{
+  width:70%;max-width:700px;height:2px;
+  background:var(--morado);
+  position:relative;margin-bottom:0;
+}
+.org-h-line::before,.org-h-line::after{
+  content:'';position:absolute;top:0;
+  width:2px;height:28px;background:var(--morado);
+}
+.org-h-line::before{left:0;}
+.org-h-line::after{right:0;}
+
+/* Nivel 3 - 4 cargos */
+.org-nivel3{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1rem;width:70%;max-width:700px;
+  padding-top:28px;
+}
+
+/* Tarjeta */
+.org-card{
+  background:var(--negro3);
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:6px;
+  padding:1.25rem 1rem;
+  text-align:center;
+  transition:transform 0.2s,border-color 0.2s;
+  position:relative;
+}
+.org-card:hover{transform:translateY(-4px);border-color:var(--morado);}
+.org-card.top{
+  border-top:3px solid var(--amarillo);
+  background:linear-gradient(160deg,rgba(245,197,24,0.06),var(--negro3));
+}
+.org-card.vp{border-top:3px solid var(--morado3);}
+.org-card.sub{border-top:2px solid var(--morado);}
+
+.org-av{
+  width:56px;height:56px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--fd);font-weight:800;font-size:1.1rem;
+  margin:0 auto 0.75rem;
+}
+.org-av.gold{background:rgba(245,197,24,0.15);color:var(--amarillo);border:2px solid rgba(245,197,24,0.3);}
+.org-av.morado{background:rgba(107,63,160,0.2);color:var(--morado3);border:2px solid rgba(107,63,160,0.3);}
+.org-av.lila{background:rgba(155,111,208,0.15);color:var(--lila-claro,#9B6FD0);border:2px solid rgba(155,111,208,0.25);}
+
+.org-cargo{
+  font-family:var(--fd);font-size:0.65rem;font-weight:700;
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--gris1);margin-bottom:0.3rem;
+}
+.org-card.top .org-cargo{color:var(--amarillo);}
+.org-card.vp .org-cargo{color:var(--morado3);}
+
+.org-nombre{
+  font-family:var(--fd);font-weight:800;font-size:0.95rem;
+  letter-spacing:0.03em;text-transform:uppercase;
+  color:var(--blanco);line-height:1.2;
+}
+
+/* Responsive organigrama */
+@media(max-width:900px){
+  .org-nivel3{grid-template-columns:repeat(2,1fr);width:90%;}
+  .org-h-line{width:90%;}
+}
+@media(max-width:480px){
+  .org-nivel3{grid-template-columns:1fr 1fr;width:100%;}
+  .org-h-line{width:100%;}
+  .org-nombre{font-size:0.82rem;}
+  .org-cargo{font-size:0.58rem;}
+  .org-av{width:46px;height:46px;font-size:0.9rem;}
+}
+
+/* ── HUSARINAS ── */
+#husarinas{background:var(--negro2);}
+.hus-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.hus-card{
+  background:var(--negro3);border:1px solid rgba(255,255,255,0.06);border-radius:4px;
+  padding:3rem 2rem;text-align:center;position:relative;overflow:hidden;
+}
+.hus-card::before{
+  content:'HUSARINAS';position:absolute;bottom:-1rem;left:50%;transform:translateX(-50%);
+  font-family:var(--fd);font-weight:900;font-size:5rem;color:rgba(255,255,255,0.03);
+  letter-spacing:-0.02em;white-space:nowrap;pointer-events:none;
+}
+.hus-figura{font-size:5rem;margin-bottom:1rem;display:block;}
+.hus-title{
+  font-family:var(--fd);font-weight:900;font-size:2.5rem;letter-spacing:0.04em;
+  text-transform:uppercase;color:var(--blanco);line-height:1;margin-bottom:0.4rem;
+}
+.hus-sub{font-family:var(--fd);font-size:0.75rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--gris1);}
+.hus-badge{
+  display:inline-block;margin-top:1.5rem;padding:8px 20px;
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);
+  font-family:var(--fd);font-weight:700;font-size:0.8rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.6);
+}
+.hus-content p{font-size:1rem;color:rgba(255,255,255,0.55);line-height:1.85;margin-bottom:1.25rem;}
+.hus-feat{display:flex;align-items:flex-start;gap:1rem;padding:0.9rem 0;border-bottom:1px solid rgba(255,255,255,0.06);}
+.hus-feat:last-of-type{border-bottom:none;}
+.hus-feat-ic{
+  width:38px;height:38px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
+  display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;
+}
+.hus-feat-tx strong{display:block;font-family:var(--fd);font-weight:700;font-size:0.88rem;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:0.1rem;}
+.hus-feat-tx span{font-size:0.82rem;color:var(--gris1);}
+.btn-hus{
+  display:inline-flex;align-items:center;gap:0.6rem;margin-top:1.75rem;
+  padding:13px 28px;background:var(--blanco);color:var(--negro);
+  font-family:var(--fd);font-weight:800;font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;
+  border-radius:2px;transition:background 0.2s,transform 0.15s;
+}
+.btn-hus:hover{background:rgba(255,255,255,0.85);transform:translateY(-2px);}
+
+/* ── NOTICIAS ── */
+#noticias{background:var(--negro);}
+.not-header{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  flex-wrap:wrap;gap:1rem;margin-bottom:2rem;
+}
+.not-fuente-lnk{
+  font-family:var(--fd);font-size:0.7rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--gris1);display:flex;align-items:center;gap:0.4rem;
+}
+.not-fuente-lnk a{color:var(--morado3);}
+.not-btns{display:flex;gap:0.6rem;}
+.not-btn{
+  padding:9px 18px;border-radius:2px;
+  font-family:var(--fd);font-weight:700;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;
+  cursor:pointer;border:none;display:inline-flex;align-items:center;gap:0.5rem;
+  transition:background 0.2s,transform 0.15s;
+}
+.not-btn:hover{transform:translateY(-1px);}
+.not-btn:disabled{opacity:0.45;cursor:not-allowed;transform:none;}
+.not-btn-rss{background:var(--morado);color:white;}
+.not-btn-rss:hover:not(:disabled){background:var(--morado3);}
+.not-btn-ia{background:rgba(255,255,255,0.08);color:white;border:1px solid rgba(255,255,255,0.15);}
+.not-btn-ia:hover:not(:disabled){background:rgba(255,255,255,0.14);}
+.not-estado{
+  display:flex;align-items:center;gap:0.75rem;
+  padding:0.9rem 1.25rem;
+  background:var(--negro3);border-left:2px solid var(--morado);
+  font-size:0.85rem;color:var(--gris1);margin-bottom:1.5rem;min-height:50px;
+}
+.not-estado.ok{border-left-color:#22c55e;color:#86efac;}
+.not-estado.err{border-left-color:var(--rojo);color:#fca5a5;}
+.not-estado.ia{border-left-color:var(--morado3);color:var(--morado3);}
+.spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,0.1);border-top-color:var(--morado3);border-radius:50%;animation:spin 0.7s linear infinite;flex-shrink:0;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.not-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.06);}
+.not-card{
+  background:var(--negro);display:flex;flex-direction:column;
+  transition:background 0.2s;overflow:hidden;
+}
+.not-card:hover{background:var(--negro3);}
+.not-top{
+  padding:1.25rem 1.25rem 1rem;
+  border-left:2px solid var(--morado);
+  flex:1;
+}
+.not-cat{
+  font-family:var(--fd);font-size:0.65rem;font-weight:700;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--morado3);margin-bottom:0.5rem;
+}
+.not-titulo{
+  font-family:var(--fd);font-weight:800;font-size:1rem;letter-spacing:0.02em;
+  line-height:1.2;color:var(--blanco);margin-bottom:0.6rem;
+}
+.not-resumen{font-size:0.82rem;color:var(--gris1);line-height:1.6;}
+.not-bot{
+  padding:0.65rem 1.25rem;
+  display:flex;align-items:center;justify-content:space-between;
+  border-top:1px solid rgba(255,255,255,0.05);
+  font-family:var(--fd);font-size:0.68rem;font-weight:600;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--gris2);
+}
+.not-src-tag{
+  padding:2px 8px;border-radius:1px;font-size:0.65rem;font-weight:700;letter-spacing:0.12em;
+}
+.tag-rss{background:rgba(107,63,160,0.15);color:var(--morado3);}
+.tag-ia{background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.4);}
+.not-ver-mas{
+  display:inline-flex;align-items:center;gap:0.6rem;margin-top:2rem;
+  padding:13px 28px;background:transparent;color:rgba(255,255,255,0.6);
+  font-family:var(--fd);font-weight:700;font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;
+  border:1px solid rgba(255,255,255,0.15);border-radius:2px;cursor:pointer;
+  transition:border-color 0.2s,color 0.2s;
+}
+.not-ver-mas:hover{border-color:var(--blanco);color:var(--blanco);}
+
+/* ── NOTICIAS FÚTBOL ── */
+.news-sec{background:var(--negro2);}
+.news-sec.intl{background:var(--negro);}
+.news-header{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;}
+.news-fuente{font-family:var(--fd);font-size:0.68rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--gris1);display:flex;align-items:center;gap:0.4rem;}
+.news-fuente a{color:var(--morado3);}
+.news-update-btn{display:inline-flex;align-items:center;gap:0.45rem;padding:7px 16px;border-radius:2px;border:none;font-family:var(--fd);font-weight:700;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--morado);color:white;cursor:pointer;transition:background 0.2s,transform 0.15s;}
+.news-update-btn:hover{background:var(--morado3);transform:translateY(-1px);}
+.news-update-btn:disabled{opacity:0.45;cursor:not-allowed;transform:none;}
+.news-estado{display:flex;align-items:center;gap:0.65rem;padding:0.8rem 1.1rem;background:var(--negro3);border-left:2px solid var(--morado);font-size:0.82rem;color:var(--gris1);margin-bottom:1.25rem;min-height:46px;}
+.news-estado.ok{border-left-color:#22c55e;color:#86efac;}
+.news-estado.err{border-left-color:#ef4444;color:#fca5a5;}
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.06);}
+.news-card{background:var(--negro2);display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:background 0.2s;overflow:hidden;}
+.news-sec.intl .news-card{background:var(--negro);}
+.news-card:hover{background:var(--negro3);}
+.news-img{width:100%;height:140px;object-fit:cover;display:block;filter:brightness(0.85);transition:filter 0.2s;}
+.news-card:hover .news-img{filter:brightness(1);}
+.news-img-placeholder{width:100%;height:140px;background:var(--negro3);display:flex;align-items:center;justify-content:center;font-size:2rem;opacity:0.3;}
+.news-body{padding:1rem 1.1rem;flex:1;display:flex;flex-direction:column;gap:0.5rem;}
+.news-cat{font-family:var(--fd);font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--morado3);}
+.news-titulo{font-family:var(--fd);font-weight:800;font-size:0.95rem;letter-spacing:0.02em;color:var(--blanco);line-height:1.25;flex:1;}
+.news-resumen{font-size:0.8rem;color:var(--gris1);line-height:1.55;}
+.news-foot{padding:0.6rem 1.1rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.05);font-family:var(--fd);font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gris2);}
+.news-src{padding:2px 8px;border-radius:1px;font-size:0.62rem;font-weight:700;background:rgba(107,63,160,0.15);color:var(--morado3);}
+@media(max-width:900px){.news-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.news-grid{grid-template-columns:1fr;}}
+@media(max-width:600px){
+  #futbol-nacional .reveal > div,
+  #futbol-internacional .reveal > div,
+  #futbol-nacional div[style*="grid-template-columns"],
+  #futbol-internacional div[style*="grid-template-columns"]{
+    grid-template-columns:1fr !important;
+  }
+}
+
+/* ── CONTACTO ── */
+#contacto{background:var(--negro2);}
+.contacto-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.contacto-desc{font-size:1rem;color:rgba(255,255,255,0.85);line-height:1.85;margin-bottom:2rem;}
+.c-row{
+  display:flex;align-items:flex-start;gap:1rem;
+  padding:1rem 0;border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.c-row:last-of-type{border-bottom:none;}
+.c-ic{
+  width:40px;height:40px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);
+  display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;
+}
+.c-tx strong{display:block;font-family:var(--fd);font-weight:700;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.9);margin-bottom:0.15rem;}
+.c-tx span{font-size:0.88rem;color:rgba(255,255,255,0.75);}
+.redes-panel{background:var(--negro3);border:1px solid rgba(255,255,255,0.06);padding:2.5rem 2rem;}
+.redes-h{
+  font-family:var(--fd);font-weight:900;font-size:1.8rem;letter-spacing:0.04em;
+  text-transform:uppercase;color:var(--blanco);margin-bottom:0.4rem;
+}
+.redes-sub{font-size:0.88rem;color:var(--gris1);margin-bottom:2rem;line-height:1.6;}
+.red-btn{
+  display:flex;align-items:center;gap:0.85rem;
+  padding:14px 20px;margin-bottom:0.75rem;border-radius:2px;
+  font-family:var(--fd);font-weight:700;font-size:0.9rem;letter-spacing:0.08em;text-transform:uppercase;
+  transition:opacity 0.2s,transform 0.15s;
+}
+.red-btn:hover{opacity:0.88;transform:translateY(-2px);}
+.red-ig{background:linear-gradient(135deg,#833ab4 0%,#fd1d1d 50%,#fcb045 100%);color:white;}
+.red-fb{background:#1877F2;color:white;}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--negro3);border-top:1px solid rgba(255,255,255,0.06);
+  padding:3rem 2rem 1.5rem;
+}
+.foot-inner{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;
+  padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,0.06);margin-bottom:1.5rem;
+}
+.foot-brand img{width:130px;height:130px;object-fit:contain;margin-bottom:1rem;filter:drop-shadow(0 0 12px rgba(107,63,160,0.4));}
+.foot-brand p{font-size:0.85rem;color:rgba(255,255,255,0.85);line-height:1.7;max-width:240px;}
+.foot-col-h{
+  font-family:var(--fd);font-size:0.68rem;font-weight:700;letter-spacing:0.22em;
+  text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:1rem;
+}
+.foot-links{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.foot-links a{font-size:0.88rem;color:rgba(255,255,255,0.85);transition:color 0.2s;}
+.foot-links a:hover{color:var(--blanco);}
+.foot-copy{
+  max-width:1200px;margin:0 auto;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;
+  font-size:0.75rem;color:rgba(255,255,255,0.6);font-family:var(--fd);letter-spacing:0.08em;
+}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.65s ease,transform 0.65s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .nav-menu a{padding:0 0.65rem;font-size:0.72rem;}
+  .hero-h1{font-size:5rem;}
+}
+
+@media(max-width:900px){
+  /* Navbar */
+  nav{top:0;padding:0 1rem;}
+  .topbar{display:none;}
+  .nav-brand span{display:none;}
+  .nav-menu{display:none;}
+  .nav-actions{display:none;}
+  .nav-hamburger{display:flex;}
+  .nav-mobile{display:block;top:60px;}
+
+  /* Banner portada */
+  #banner-portada{margin-top:60px;}
+  #banner-portada img{max-height:130px;object-position:center;}
+
+  /* Hero */
+  #hero{padding-top:2rem;min-height:auto;}
+  .hero-main{grid-template-columns:1fr;text-align:center;padding:2rem 1rem;}
+  .hero-left{order:2;}
+  .hero-right{order:1;}
+  .hero-escudo{width:92vw;height:92vw;max-width:420px;}
+  .hero-escudo-glow{width:96vw;height:96vw;max-width:460px;}
+  .nos-escudo{width:88vw;height:88vw;max-width:420px;}
+  .hero-eyebrow{justify-content:center;}
+  .hero-eyebrow::before{display:none;}
+  .hero-h1{font-size:3.8rem;}
+  .hero-slogan{font-size:1rem;}
+  .hero-cta{justify-content:center;}
+  .hero-tags{justify-content:center;}
+
+  /* Ticker */
+  .ticker-label{padding:0 0.75rem;font-size:0.65rem;}
+
+  /* Secciones generales */
+  .sec-pad{padding:3rem 1rem;}
+  .ctr{padding:0;}
+
+  /* Condolencias */
+  #banner-condolencias{padding:2rem 1rem;}
+  #banner-condolencias > div{grid-template-columns:1fr !important;text-align:center;gap:1.5rem;}
+  #banner-condolencias img{width:200px !important;margin:0 auto;}
+
+  /* Banner inauguración */
+  #banner-inaug{padding:2rem 1rem;}
+  .inaug-inner{grid-template-columns:1fr;text-align:center;gap:1.5rem;}
+  .inaug-img{width:200px;}
+  .inaug-img-wrap{margin:0 auto;}
+  .inaug-tag{justify-content:center;}
+  .inaug-tag::before{display:none;}
+  .inaug-data{justify-content:center;}
+  .inaug-dato{flex-direction:column;text-align:center;padding:0.5rem 0.75rem;}
+  .inaug-desc{font-size:0.9rem;}
+
+  /* Nosotros */
+  .nos-grid{grid-template-columns:1fr;gap:2rem;}
+  .nos-bg-txt{font-size:5rem;}
+  .kpi-row{grid-template-columns:repeat(3,1fr);}
+  .kpi-n{font-size:1.8rem;}
+
+  /* Series */
+  .series-grid{grid-template-columns:repeat(2,1fr);}
+  .serie-nm{font-size:0.9rem;}
+
+  /* Directiva */
+  .org-nivel3{grid-template-columns:repeat(2,1fr);width:95%;}
+  .org-h-line{width:95%;}
+
+  /* Husarinas */
+  .hus-layout{grid-template-columns:1fr;gap:2rem;}
+  .hus-card{padding:2rem 1.25rem;}
+  .hus-title{font-size:1.6rem;}
+
+  /* Noticias */
+  .not-header{flex-direction:column;align-items:flex-start;gap:0.75rem;}
+  .not-grid{grid-template-columns:1fr;}
+  .not-titulo{font-size:0.92rem;}
+
+  /* Contacto */
+  .contacto-grid{grid-template-columns:1fr;gap:2rem;}
+
+  /* Footer */
+  .foot-inner{grid-template-columns:1fr;gap:1.5rem;}
+  .foot-copy{flex-direction:column;text-align:center;gap:0.4rem;}
+}
+
+@media(max-width:480px){
+  /* Navbar */
+  nav{height:56px;}
+  .nav-logo img{width:38px;height:38px;}
+  .nav-brand{font-size:0.85rem;}
+
+  /* Banner portada */
+  #banner-portada img{max-height:100px;}
+
+  /* Hero */
+  .hero-escudo{width:95vw;height:95vw;max-width:380px;}
+  .nos-escudo{width:90vw;height:90vw;max-width:380px;}
+  .hero-h1{font-size:3rem;}
+  .hero-slogan{font-size:0.9rem;letter-spacing:0.12em;}
+  .btn-morado,.btn-outline{padding:11px 20px;font-size:0.78rem;}
+
+  /* Textos generales */
+  .sec-h2{font-size:1.6rem;}
+  .sec-pad{padding:2.5rem 0.85rem;}
+
+  /* Condolencias */
+  #banner-condolencias > div > div:last-child h2{font-size:1.4rem !important;}
+  #banner-condolencias > div > div:last-child p{font-size:0.82rem !important;}
+  #banner-condolencias img{width:160px !important;}
+
+  /* Inauguración */
+  .inaug-h{font-size:1.5rem;}
+  .inaug-img{width:160px;}
+  .inaug-dato-tx strong{font-size:0.78rem;}
+
+  /* Series */
+  .series-grid{grid-template-columns:1fr 1fr;}
+  .serie-content{padding:0.9rem 0.85rem 1.1rem;}
+  .serie-nm{font-size:0.82rem;}
+  .serie-ds{font-size:0.72rem;}
+  .serie-ic{font-size:1.1rem;margin-bottom:0.3rem;}
+
+  /* Directiva */
+  .org-nombre{font-size:0.82rem;}
+  .org-cargo{font-size:0.58rem;}
+  .org-av{width:46px;height:46px;font-size:0.9rem;}
+
+  /* Partido */
+  .partido-head{flex-direction:column;gap:0.3rem;align-items:flex-start;}
+  .partido-foot{gap:0.75rem;padding:0.75rem 1rem;}
+  .pf-txt strong{font-size:0.78rem;}
+  .pf-txt small{font-size:0.62rem;}
+
+  /* Noticias */
+  .not-btns{flex-wrap:wrap;}
+  .not-btn{font-size:0.72rem;padding:7px 12px;}
+
+  /* Contacto */
+  .redes-h{font-size:1.4rem;}
+  .red-btn{font-size:0.8rem;padding:12px 16px;}
+
+  /* KPIs */
+  .kpi-n{font-size:1.5rem;}
+  .kpi-l{font-size:0.6rem;}
+
+  /* Footer */
+  .foot-brand p{font-size:0.78rem;}
+  .foot-links a{font-size:0.82rem;}
+  footer{padding:2rem 1rem 1rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <span>Club Deportivo Los Húsares</span>
+    <span>Comuna de Santa María</span>
+  </div>
+  <div class="topbar-right">
+    <div class="topbar-rr">
+      <a href="https://www.instagram.com/loshusaressantamaria/" target="_blank" title="Instagram">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.facebook.com/los.husares.santa.maria" target="_blank" title="Facebook">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    <img src="escudo.png" alt="Los Húsares">
+    <div class="nav-brand">Los Húsares<span>Santa María · San Felipe</span></div>
+  </a>
+
+  <div class="nav-menu">
+    <a href="#nosotros">El Club</a>
+    <a href="#banner-inaug" style="color:var(--amarillo)">⚡ Inauguración</a>
+    <a href="#partidos">Partidos</a>
+    <a href="#series">Series</a>
+    <a href="#directiva">Directiva</a>
+    <a href="#husarinas">Husarinas</a>
+
+    <!-- DROPDOWN -->
+    <div class="nav-dropdown">
+      <button class="nav-drop-btn">
+        Más
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6,9 12,15 18,9"/></svg>
+      </button>
+      <div class="nav-drop-menu">
+        <a href="#noticias-locales"><span class="drop-icon">📰</span>Noticias Locales<span class="drop-soon">Próximo</span></a>
+        <a href="#futbol-nacional"><span class="drop-icon">⚽</span>Fútbol Nacional<span class="drop-soon">Próximo</span></a>
+        <a href="#futbol-internacional"><span class="drop-icon">🌍</span>Fútbol Internacional<span class="drop-soon">Próximo</span></a>
+        <a href="#galeria"><span class="drop-icon">📸</span>Galería<span class="drop-soon">Próximo</span></a>
+        <a href="#socios"><span class="drop-icon">🎽</span>Socios<span class="drop-soon">Próximo</span></a>
+      </div>
+    </div>
+
+    <a href="#contacto">Contacto</a>
+  </div>
+
+  <div class="nav-actions">
+    <a href="https://www.instagram.com/loshusaressantamaria/" target="_blank" class="nav-btn nav-btn-ig">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-1px"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+      Instagram
+    </a>
+    <a href="https://www.facebook.com/los.husares.santa.maria" target="_blank" class="nav-btn nav-btn-fb">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-1px"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      Facebook
+    </a>
+  </div>
+
+  <!-- HAMBURGUESA -->
+  <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MENÚ MÓVIL -->
+<div class="nav-mobile" id="nav-mobile">
+  <div class="mob-section">
+    <div class="mob-section-title">El Club</div>
+    <a href="#nosotros" class="mob-link" onclick="closeMenu()"><span class="mob-icon">🏟️</span>El Club</a>
+    <a href="#banner-inaug" class="mob-link" onclick="closeMenu()" style="color:var(--amarillo)"><span class="mob-icon">⚡</span>Inauguración</a>
+    <a href="#partidos" class="mob-link" onclick="closeMenu()"><span class="mob-icon">⚽</span>Partidos</a>
+    <a href="#series" class="mob-link" onclick="closeMenu()"><span class="mob-icon">🎽</span>Series</a>
+    <a href="#directiva" class="mob-link" onclick="closeMenu()"><span class="mob-icon">👥</span>Directiva</a>
+    <a href="#husarinas" class="mob-link" onclick="closeMenu()"><span class="mob-icon">👩</span>Las Husarinas</a>
+    <a href="#contacto" class="mob-link" onclick="closeMenu()"><span class="mob-icon">📞</span>Contacto</a>
+  </div>
+
+  <div class="mob-section">
+    <div class="mob-section-title">Contenido</div>
+    <a href="#noticias-locales" class="mob-link" onclick="closeMenu()"><span class="mob-icon">📰</span>Noticias Locales<span class="mob-soon">Próximo</span></a>
+    <a href="#futbol-nacional" class="mob-link" onclick="closeMenu()"><span class="mob-icon">⚽</span>Fútbol Nacional<span class="mob-soon">Próximo</span></a>
+    <a href="#futbol-internacional" class="mob-link" onclick="closeMenu()"><span class="mob-icon">🌍</span>Fútbol Internacional<span class="mob-soon">Próximo</span></a>
+    <a href="#galeria" class="mob-link" onclick="closeMenu()"><span class="mob-icon">📸</span>Galería<span class="mob-soon">Próximo</span></a>
+    <a href="#socios" class="mob-link" onclick="closeMenu()"><span class="mob-icon">🎽</span>Socios<span class="mob-soon">Próximo</span></a>
+  </div>
+
+  <div class="mob-section">
+    <div class="mob-section-title">Redes Sociales</div>
+    <div class="mob-redes">
+      <a href="https://www.instagram.com/loshusaressantamaria/" target="_blank" class="mob-red mob-red-ig">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+        Instagram
+      </a>
+      <a href="https://www.facebook.com/los.husares.santa.maria" target="_blank" class="mob-red mob-red-fb">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        Facebook
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- BANNER PORTADA -->
+<div id="banner-portada">
+  <img src="banner_portada.jpg" alt="Club Deportivo Los Húsares · Pasión Respeto Unión · Más que un club, una familia">
+</div>
+
+<!-- HERO -->
+<section id="hero" style="padding-top:2rem;min-height:calc(100vh - 280px)">
+  <div class="hero-bg"></div>
+  <div class="hero-noise"></div>
+  <div class="hero-main">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Club Deportivo · Comuna de Santa María</div>
+      <h1 class="hero-h1">Los<br><span class="morado">Húsares</span></h1>
+      <p class="hero-slogan">¡Vamos Familia Lila!</p>
+      <div class="hero-cta">
+        <a href="#partidos" class="btn-morado">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+          Próximos Partidos
+        </a>
+        <a href="#contacto" class="btn-outline">Contáctanos</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-escudo-wrap">
+        <div class="hero-escudo-glow"></div>
+        <img src="escudo.png" alt="Escudo Club Deportivo Los Húsares" class="hero-escudo">
+      </div>
+      <div class="hero-tags">
+        <span class="hero-tag">Santa María</span>
+        <span class="hero-tag">V Región</span>
+        <span class="hero-tag">Fútbol Amateur</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-label">⚽ Noticias</div>
+  <div class="ticker-track">
+    <span class="ticker-item">Club Deportivo Los Húsares</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">¡Vamos los Lilas!</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Comuna de Santa María</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Un equipo de potreros no se rinde</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">¡Toda mujer será bienvenida! — Las Husarinas</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Cancha Juventud Pobladores</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Presidente: Bernardo Cepeda</span><span class="ticker-sep">·</span>
+    <!-- duplicado para loop -->
+    <span class="ticker-item">Club Deportivo Los Húsares</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">¡Vamos los Lilas!</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Comuna de Santa María</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Un equipo de potreros no se rinde</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">¡Toda mujer será bienvenida! — Las Husarinas</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Cancha Juventud Pobladores</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Presidente: Bernardo Cepeda</span><span class="ticker-sep">·</span>
+  </div>
+</div>
+
+<!-- CONDOLENCIAS -->
+<section id="banner-condolencias" style="background:#0a0008;padding:2.5rem 2rem;border-top:3px solid #2a0a2a;border-bottom:3px solid #2a0a2a;">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:3rem;">
+    <div style="flex-shrink:0;">
+      <img src="condolencias.jpg" alt="Condolencias Miguel Altamirano"
+        style="width:260px;border-radius:6px;box-shadow:0 0 30px rgba(0,0,0,0.8);display:block;">
+    </div>
+    <div>
+      <div style="font-family:var(--fd);font-size:0.7rem;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:#888;margin-bottom:0.5rem;">Club Deportivo Los Húsares</div>
+      <h2 style="font-family:var(--fd);font-weight:900;font-size:clamp(1.6rem,3.5vw,2.5rem);letter-spacing:0.03em;text-transform:uppercase;color:#fff;line-height:1;margin-bottom:0.5rem;">Nuestras más sentidas<br><span style="color:#9b6b9b;">Condolencias</span></h2>
+      <div style="width:40px;height:2px;background:#6b3f6b;margin-bottom:1rem;"></div>
+      <p style="font-size:0.95rem;color:rgba(255,255,255,0.6);line-height:1.8;max-width:520px;margin-bottom:1rem;">
+        El Club Deportivo Los Húsares expresa sus más sentidas condolencias a nuestro jugador <strong style="color:#fff;">Miguel Altamirano</strong> y a toda su familia, por el fallecimiento de su querida madre.
+      </p>
+      <p style="font-size:0.9rem;color:rgba(255,255,255,0.4);line-height:1.7;max-width:520px;font-style:italic;">
+        "En estos momentos de dolor, les hacemos llegar nuestro abrazo solidario, deseándoles fuerza, paz y consuelo."
+      </p>
+      <div style="margin-top:1.25rem;font-family:var(--fd);font-size:0.9rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6b3f6b;">★ Más que un club, una familia ★</div>
+    </div>
+  </div>
+</section>
+
+<!-- BANNER INAUGURACIÓN -->
+<section id="banner-inaug">
+  <div class="inaug-inner">
+    <div class="inaug-img-wrap reveal">
+      <span class="inaug-badge">🔥 Próximo Evento</span>
+      <img src="inauguracion.jpg" alt="Inauguración Estadio Los Húsares" class="inaug-img">
+    </div>
+    <div class="reveal" style="transition-delay:0.12s">
+      <div class="inaug-tag">Evento Histórico</div>
+      <h2 class="inaug-h">Inauguración del<br>Nuevo <span class="acc">Estadio</span><br>Los Húsares</h2>
+      <p class="inaug-desc">
+        Te invitamos a ser parte de un nuevo comienzo de nuestra historia. El <strong style="color:var(--blanco)">Estadio Los Húsares</strong>, ubicado en el sector Los Lemus, Comuna de Santa María, abre sus puertas para la comunidad. ¡Más que un estadio, es nuestro hogar!
+      </p>
+      <div class="inaug-data">
+        <div class="inaug-dato">
+          <span class="inaug-dato-ic">📅</span>
+          <div class="inaug-dato-tx">
+            <strong>Sábado 13 de Junio 2026</strong>
+            <small>Fecha del evento</small>
+          </div>
+        </div>
+        <div class="inaug-dato">
+          <span class="inaug-dato-ic">🕔</span>
+          <div class="inaug-dato-tx">
+            <strong>Desde las 17:00 hrs</strong>
+            <small>Horario</small>
+          </div>
+        </div>
+        <div class="inaug-dato">
+          <span class="inaug-dato-ic">📍</span>
+          <div class="inaug-dato-tx">
+            <strong>Sector Los Lemus</strong>
+            <small>Comuna de Santa María</small>
+          </div>
+        </div>
+      </div>
+      <div class="inaug-slogan">★ Más que un estadio; <span>es nuestro hogar</span> ★</div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTIDOS -->
+<section id="partidos" class="sec-pad">
+  <div class="ctr">
+    <div class="reveal">
+      <div class="sec-label">Actividad Deportiva</div>
+      <h2 class="sec-h2">Próximo <span class="acc">Partido</span></h2>
+      <div class="sec-sep"></div>
+    </div>
+      <div class="partido-card reveal">
+      <div class="partido-head">
+        <span class="partido-comp">Partido Amistoso · Estadio Los Húsares · Santa María</span>
+        <span class="partido-fecha">Sáb 13 · Dom 14 de Junio 2026</span>
+      </div>
+      <!-- Flyer oficial -->
+      <div style="width:100%;text-align:center;padding:1rem 0;">
+        <img src="partido.png" alt="Partido Amistoso Los Húsares vs Juventud Pobladores"
+          style="max-width:100%;width:560px;border-radius:4px;display:inline-block;">
+      </div>
+      <div class="partido-foot">
+        <div class="pf-item">
+          <span class="pf-icon">📍</span>
+          <div class="pf-txt"><strong>Estadio Los Húsares</strong><small>Santa María</small></div>
+        </div>
+        <div class="pf-item">
+          <span class="pf-icon">📅</span>
+          <div class="pf-txt"><strong>Sáb 13 Jun 13:00 · Dom 14 Jun 12:30</strong><small>Horario de partidos</small></div>
+        </div>
+        <div class="pf-item">
+          <span class="pf-icon">🌐</span>
+          <div class="pf-txt"><strong>www.loshusares.cl</strong><small>Sitio oficial</small></div>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:1rem;font-size:0.8rem;color:var(--gris1);text-align:right;font-family:var(--fd);letter-spacing:0.08em;">
+      Sigue nuestras redes para la programación actualizada →
+      <a href="https://www.instagram.com/loshusaressantamaria/" target="_blank" style="color:var(--morado3);margin-left:0.4rem">@loshusaressantamaria</a>
+    </p>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section id="nosotros" class="sec-pad">
+  <div class="ctr">
+    <div class="nos-grid">
+      <div class="reveal">
+        <div class="sec-label">El Club</div>
+        <h2 class="sec-h2">Club Deportivo<br><span class="acc">Los Húsares</span></h2>
+        <div class="sec-sep"></div>
+        <p class="nos-text">
+          <p>El <strong>Club Deportivo Los Húsares</strong> es una institución de fútbol amateur ubicada en la <strong>comuna de Santa María</strong>, en la ciudad de San Felipe, Región de Valparaíso.</p>
+          <p>Más que un club, somos una familia. Integramos a niños, jóvenes, mujeres y adultos de nuestra comunidad, promoviendo el deporte como un espacio de encuentro y formación, donde se fortalecen valores como el compañerismo, el esfuerzo y la superación personal.</p>
+          <p>Nuestros colores son el <strong>lila y el blanco</strong>, símbolos que nos representan dentro y fuera de la cancha, acompañados de nuestro característico grito de guerra: <em>¡HU! ¡U! ¡HU! ¡U! ¡HU! ¡U!… ¡Húsares de los Lemus!</em></p>
+          <p>Participamos activamente en el campeonato comunal, reconocido por su alto nivel dentro del fútbol amateur de la Región de Valparaíso. Competimos en diversas series —infantil, juveniles, femenina, senior y adulta— disputando partidos todos los fines de semana, tanto en condición de local como de visita, según el calendario anual.</p>
+        </p>
+        <div class="kpi-row">
+          <div class="kpi"><div class="kpi-n">8</div><div class="kpi-l">Series</div></div>
+          <div class="kpi"><div class="kpi-n">💜</div><div class="kpi-l">Los Lilas</div></div>
+          <div class="kpi"><div class="kpi-n">Sáb·Dom</div><div class="kpi-l" style="font-size:0.6rem">Días Partido</div></div>
+        </div>
+      </div>
+      <div class="nos-visual reveal" style="transition-delay:0.15s">
+        <div class="nos-bg-txt">HÚSARES</div>
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <img src="escudo.png" alt="Escudo" class="nos-escudo">
+          <div class="nos-slogan">Un equipo de potreros no se rinde &nbsp;·&nbsp; <span>¡Vamos los Lilas!</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERIES -->
+<section id="series" class="sec-pad" style="padding-bottom:0">
+  <div class="ctr">
+    <div class="reveal">
+      <div class="sec-label">Categorías</div>
+      <h2 class="sec-h2">Nuestras <span class="acc">Series</span></h2>
+      <div class="sec-sep"></div>
+    </div>
+  </div>
+  <div class="series-grid reveal">
+    <div class="serie-box">
+      <img src="2da_infantil.jpg" class="serie-foto" alt="2da Infantil">
+      <div class="serie-content"><div class="serie-ic">👶</div><div class="serie-nm">2da Infantil</div><div class="serie-ds">Los más pequeños del club</div></div>
+    </div>
+    <div class="serie-box">
+      <div class="serie-foto-placeholder">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
+        <span>Agregar foto · 1ra Infantil</span>
+      </div>
+      <div class="serie-content"><div class="serie-ic">🧒</div><div class="serie-nm">1ra Infantil</div><div class="serie-ds">División infantil superior</div></div>
+    </div>
+    <div class="serie-box">
+      <div class="serie-foto-placeholder">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
+        <span>Agregar foto · 3ra Adulta</span>
+      </div>
+      <div class="serie-content"><div class="serie-ic">⚽</div><div class="serie-nm">3ra Adulta</div><div class="serie-ds">Fútbol adulto</div></div>
+    </div>
+    <div class="serie-box">
+      <div class="serie-foto-placeholder">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
+        <span>Agregar foto · 2da Adulta</span>
+      </div>
+      <div class="serie-content"><div class="serie-ic">🏃</div><div class="serie-nm">2da Adulta</div><div class="serie-ds">División adulta</div></div>
+    </div>
+    <div class="serie-box">
+      <img src="1ra_adulta.jpg" class="serie-foto" alt="1ra Adulta">
+      <div class="serie-content"><div class="serie-ic">🥇</div><div class="serie-nm">1ra Adulta</div><div class="serie-ds">Máxima categoría adulta</div></div>
+    </div>
+    <div class="serie-box">
+      <img src="mujeres.jpg" class="serie-foto" alt="Mujeres - Las Husarinas">
+      <div class="serie-content"><div class="serie-ic">👩</div><div class="serie-nm">Mujeres</div><div class="serie-ds">Las Husarinas</div></div>
+    </div>
+    <div class="serie-box">
+      <img src="senior35.jpg" class="serie-foto" alt="Senior 35">
+      <div class="serie-content"><div class="serie-ic">🧔</div><div class="serie-nm">Senior 35</div><div class="serie-ds">Mayores de 35 años</div></div>
+    </div>
+    <div class="serie-box">
+      <img src="senior45.jpg" class="serie-foto" alt="Senior 45">
+      <div class="serie-content"><div class="serie-ic">🏅</div><div class="serie-nm">Senior 45</div><div class="serie-ds">Mayores de 45 años</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DIRECTIVA -->
+<section id="directiva" class="sec-pad">
+  <div class="ctr">
+    <div class="reveal" style="text-align:center">
+      <div class="sec-label" style="justify-content:center">Autoridades</div>
+      <h2 class="sec-h2">Directiva <span class="acc">Electa</span></h2>
+      <div class="sec-sep" style="margin:0.6rem auto 2.5rem"></div>
+    </div>
+
+    <div class="org-wrap reveal">
+
+      <!-- NIVEL 1: PRESIDENTE -->
+      <div class="org-nivel1">
+        <div class="org-card top">
+          <div class="org-av gold">BC</div>
+          <div class="org-cargo">Presidente</div>
+          <div class="org-nombre">Bernardo Cepeda</div>
+        </div>
+      </div>
+
+      <!-- NIVEL 2: VICEPRESIDENTE -->
+      <div class="org-nivel2">
+        <div class="org-card vp">
+          <div class="org-av morado">ML</div>
+          <div class="org-cargo">Vicepresidente</div>
+          <div class="org-nombre">Miguel Lazcano</div>
+        </div>
+      </div>
+
+      <!-- LÍNEA HORIZONTAL -->
+      <div class="org-h-line"></div>
+
+      <!-- NIVEL 3: SECRETARIA · TESORERO · DIRECTOR · DIRECTORA -->
+      <div class="org-nivel3">
+        <div class="org-card sub">
+          <div class="org-av lila">FG</div>
+          <div class="org-cargo">Secretaria</div>
+          <div class="org-nombre">Fabiola Galdamez</div>
+        </div>
+        <div class="org-card sub">
+          <div class="org-av morado">MG</div>
+          <div class="org-cargo">Tesorero</div>
+          <div class="org-nombre">Manuel Galdamez</div>
+        </div>
+        <div class="org-card sub">
+          <div class="org-av lila">BC</div>
+          <div class="org-cargo">Directora</div>
+          <div class="org-nombre">Barbara Cepeda</div>
+        </div>
+        <div class="org-card sub">
+          <div class="org-av morado">KQ</div>
+          <div class="org-cargo">Director</div>
+          <div class="org-nombre">Kevin Quijanes</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HUSARINAS -->
+<section id="husarinas" class="sec-pad">
+  <div class="ctr">
+    <div class="reveal">
+      <div class="sec-label">Rama Femenina</div>
+      <h2 class="sec-h2">Las <span class="acc">Husarinas</span></h2>
+      <div class="sec-sep"></div>
+    </div>
+    <div class="hus-layout">
+      <div class="hus-card reveal">
+        <span class="hus-figura">⚽</span>
+        <div class="hus-title">Las<br>Husarinas</div>
+        <div class="hus-sub">Rama Femenina · Los Húsares</div>
+        <div class="hus-badge">¡Toda mujer será bienvenida! 💜</div>
+      </div>
+      <div class="reveal" style="transition-delay:0.15s">
+        <p style="font-size:1rem;color:rgba(255,255,255,0.55);line-height:1.85;margin-bottom:1.25rem;">La <strong style="color:var(--blanco)">Rama Femenina de Las Husarinas</strong> es el espacio del club para todas las mujeres que quieran ser parte de este hermoso club. ¡Las estamos esperando!</p>
+        <p style="font-size:1rem;color:rgba(255,255,255,0.55);line-height:1.85;margin-bottom:1.25rem;">Si quieres jugar, no importa tu nivel ni experiencia. Contáctanos por mensaje directo en redes sociales.</p>
+        <div class="hus-feat"><div class="hus-feat-ic">👩</div><div class="hus-feat-tx"><strong>Abierta a todas</strong><span>Sin importar edad ni experiencia previa</span></div></div>
+        <div class="hus-feat"><div class="hus-feat-ic">📍</div><div class="hus-feat-tx"><strong>Partidos los fines de semana</strong><span>Cancha Juventud Pobladores, San Felipe</span></div></div>
+        <div class="hus-feat"><div class="hus-feat-ic">💬</div><div class="hus-feat-tx"><strong>Consultas al DM</strong><span>Escríbenos por Instagram o Facebook del club</span></div></div>
+        <a href="https://www.instagram.com/loshusaressantamaria/" target="_blank" class="btn-hus">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+          Escribir al DM
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FÚTBOL NACIONAL -->
+<section id="futbol-nacional" class="sec-pad news-sec">
+  <div class="ctr">
+    <div class="reveal">
+      <div class="sec-label">Chile</div>
+      <h2 class="sec-h2">Fútbol <span class="acc">Nacional</span></h2>
+      <div class="sec-sep"></div>
+      <p style="font-size:0.9rem;color:var(--gris1);margin-bottom:1.5rem;">
+        Últimas noticias del fútbol chileno — ANFP, Selección y más.
+      </p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;" class="reveal">
+      <!-- ANFP Chile -->
+      <div>
+        <p style="font-family:var(--fd);font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--morado3);margin-bottom:0.75rem;">@ANFPChile</p>
+        <a class="twitter-timeline"
+           data-theme="dark"
+           data-height="450"
+           data-chrome="noheader nofooter noborders"
+           href="https://twitter.com/ANFPChile">
+          Cargando tweets...
+        </a>
+      </div>
+      <!-- ESPN Chile -->
+      <div>
+        <p style="font-family:var(--fd);font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--morado3);margin-bottom:0.75rem;">@ESPNChile</p>
+        <a class="twitter-timeline"
+           data-theme="dark"
+           data-height="450"
+           data-chrome="noheader nofooter noborders"
+           href="https://twitter.com/ESPNChile">
+          Cargando tweets...
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FÚTBOL INTERNACIONAL -->
+<section id="futbol-internacional" class="sec-pad news-sec intl">
+  <div class="ctr">
+    <div class="reveal">
+      <div class="sec-label">Mundo</div>
+      <h2 class="sec-h2">Fútbol <span class="acc">Internacional</span></h2>
+      <div class="sec-sep"></div>
+      <p style="font-size:0.9rem;color:var(--gris1);margin-bottom:1.5rem;">
+        Champions League, Premier League, LaLiga y más.
+      </p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;" class="reveal">
+      <!-- UEFA -->
+      <div>
+        <p style="font-family:var(--fd);font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--morado3);margin-bottom:0.75rem;">@ChampionsLeague</p>
+        <a class="twitter-timeline"
+           data-theme="dark"
+           data-height="450"
+           data-chrome="noheader nofooter noborders"
+           href="https://twitter.com/ChampionsLeague">
+          Cargando tweets...
+        </a>
+      </div>
+      <!-- ESPN Deportes -->
+      <div>
+        <p style="font-family:var(--fd);font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--morado3);margin-bottom:0.75rem;">@ESPNDeportes</p>
+        <a class="twitter-timeline"
+           data-theme="dark"
+           data-height="450"
+           data-chrome="noheader nofooter noborders"
+           href="https://twitter.com/ESPNDeportes">
+          Cargando tweets...
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="sec-pad">
+  <div class="ctr">
+    <div class="reveal">
+      <div class="sec-label">Comunícate</div>
+      <h2 class="sec-h2">Contacto <span class="acc">& Redes</span></h2>
+      <div class="sec-sep"></div>
+    </div>
+    <div class="contacto-grid">
+      <div class="reveal">
+        <p class="contacto-desc">¿Quieres ser parte de la <strong style="color:var(--blanco)">Familia Lila</strong>? Para inscribirte, consultar fechas o cualquier información del club, contáctanos por redes sociales o acércate a la cancha los días de partido.</p>
+        <div class="c-row"><div class="c-ic">📍</div><div class="c-tx"><strong>Sede</strong><span>Estadio Los Húsares<br>Sector Los Lemus<br>Comuna de Santa María, V Región</span></div></div>
+        <div class="c-row"><div class="c-ic">📅</div><div class="c-tx"><strong>Días de Partido</strong><span>Sábados y Domingos</span></div></div>
+        <div class="c-row"><div class="c-ic">🎽</div><div class="c-tx"><strong>Colores del Club</strong><span>Lila y Blanco — "Los Lilas"</span></div></div>
+        <div class="c-row"><div class="c-ic">👤</div><div class="c-tx"><strong>Presidente</strong><span>Bernardo Cepeda</span></div></div>
+      </div>
+      <div class="redes-panel reveal" style="transition-delay:0.15s">
+        <div class="redes-h">Síguenos</div>
+        <p class="redes-sub">Toda la información de partidos, resultados y noticias del club en nuestras redes.</p>
+        <a href="https://www.instagram.com/loshusaressantamaria/" target="_blank" class="red-btn red-ig">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+          @loshusaressantamaria
+        </a>
+        <a href="https://www.facebook.com/los.husares.santa.maria" target="_blank" class="red-btn red-fb">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          Los Húsares Santa María
+        </a>
+        <div style="text-align:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.06)">
+          <img src="escudo.png" alt="Escudo" style="width:120px;height:120px;object-fit:contain;margin:0 auto;filter:drop-shadow(0 0 16px rgba(107,63,160,0.4))">
+          <p style="font-family:var(--fd);font-size:0.88rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.9);margin-top:0.75rem;">¡Vamos los Lilas! 💜🤍</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <img src="escudo.png" alt="Los Húsares">
+      <p>Club Deportivo Los Húsares · Comuna de Santa María · San Felipe · Región de Valparaíso · Chile</p>
+    </div>
+    <div>
+      <div class="foot-col-h">Navegación</div>
+      <ul class="foot-links">
+        <li><a href="#nosotros">El Club</a></li>
+        <li><a href="#partidos">Partidos</a></li>
+        <li><a href="#series">Series</a></li>
+        <li><a href="#directiva">Directiva</a></li>
+        <li><a href="#husarinas">Las Husarinas</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-col-h">Redes Sociales</div>
+      <ul class="foot-links">
+        <li><a href="https://www.instagram.com/loshusaressantamaria/" target="_blank">Instagram</a></li>
+        <li><a href="https://www.facebook.com/los.husares.santa.maria" target="_blank">Facebook</a></li>
+      </ul>
+      <div style="margin-top:1.5rem">
+        <div class="foot-col-h">Sede</div>
+        <p style="font-size:0.82rem;color:rgba(255,255,255,0.85);line-height:1.7">Cancha Juventud Pobladores<br>Comuna de Santa María<br>San Felipe, V Región</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot-copy">
+    <span>© 2025 Club Deportivo Los Húsares · Santa María · San Felipe</span>
+    <span style="display:flex;align-items:center;gap:0.5rem;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" opacity="0.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      <span id="visitas-txt" style="opacity:0.5;font-size:0.72rem;letter-spacing:0.1em;">Cargando visitas...</span>
+    </span>
+    <span>Hecho con 💜 para la Familia Lila</span>
+  </div>
+</footer>
+
+<script>
+// Noticias via Twitter widgets
+// ── CONTADOR DE VISITAS ──
+(async () => {
+  try {
+    // API gratuita — cuenta visitas únicas por página
+    const resp = await fetch('https://api.counterapi.dev/v1/loshusares-cl/visitas/up');
+    const data = await resp.json();
+    const count = data?.count ?? data?.value ?? 0;
+    const txt = document.getElementById('visitas-txt');
+    if (txt) {
+      // Formatear número con puntos (ej: 1.234)
+      const fmt = new Intl.NumberFormat('es-CL').format(count);
+      txt.textContent = fmt + ' visitas';
+    }
+  } catch(e) {
+    const txt = document.getElementById('visitas-txt');
+    if (txt) txt.textContent = '';
+  }
+})();
+function toggleMenu() {
+  const mob = document.getElementById('nav-mobile');
+  const ham = document.getElementById('hamburger');
+  const open = mob.classList.toggle('open');
+  ham.classList.toggle('open', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+function closeMenu() {
+  document.getElementById('nav-mobile').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeMenu(); });
+
+// Scroll reveal
+const revObs = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:0.07,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+// Navbar scroll
+const nb = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  nb.classList.toggle('scrolled', window.scrollY > 36);
+  const secs = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.nav-menu a');
+  let cur = '';
+  secs.forEach(s => { if(window.scrollY >= s.offsetTop - 80) cur = s.id; });
+  links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#'+cur));
+});
+
+</script>
+<!-- Script Twitter/X widgets -->
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</body>
+</html>
