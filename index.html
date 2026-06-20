@@ -996,7 +996,7 @@ footer{
       </button>
       <div class="nav-drop-menu">
         <a href="#noticias-locales"><span class="drop-icon">📰</span>Noticias Locales</a>
-        <a href="#futbol-nacional"><span class="drop-icon">⚽</span>Fútbol Nacional<span class="drop-soon">Próximo</span></a>
+        <a href="#futbol-nacional"><span class="drop-icon">⚽</span>Fútbol Nacional</a>
         <a href="#futbol-internacional"><span class="drop-icon">🌍</span>Fútbol Internacional<span class="drop-soon">Próximo</span></a>
         <a href="#galeria"><span class="drop-icon">📸</span>Galería<span class="drop-soon">Próximo</span></a>
         <a href="#socios"><span class="drop-icon">🎽</span>Socios<span class="drop-soon">Próximo</span></a>
@@ -1039,7 +1039,7 @@ footer{
   <div class="mob-section">
     <div class="mob-section-title">Contenido</div>
     <a href="#noticias-locales" class="mob-link" onclick="closeMenu()"><span class="mob-icon">📰</span>Noticias Locales</a>
-    <a href="#futbol-nacional" class="mob-link" onclick="closeMenu()"><span class="mob-icon">⚽</span>Fútbol Nacional<span class="mob-soon">Próximo</span></a>
+    <a href="#futbol-nacional" class="mob-link" onclick="closeMenu()"><span class="mob-icon">⚽</span>Fútbol Nacional</a>
     <a href="#futbol-internacional" class="mob-link" onclick="closeMenu()"><span class="mob-icon">🌍</span>Fútbol Internacional<span class="mob-soon">Próximo</span></a>
     <a href="#galeria" class="mob-link" onclick="closeMenu()"><span class="mob-icon">📸</span>Galería<span class="mob-soon">Próximo</span></a>
     <a href="#socios" class="mob-link" onclick="closeMenu()"><span class="mob-icon">🎽</span>Socios<span class="mob-soon">Próximo</span></a>
@@ -1407,32 +1407,17 @@ footer{
       <h2 class="sec-h2">Fútbol <span class="acc">Nacional</span></h2>
       <div class="sec-sep"></div>
       <p style="font-size:0.9rem;color:var(--gris1);margin-bottom:1.5rem;">
-        Últimas noticias del fútbol chileno — ANFP, Selección y más.
+        Últimas noticias del fútbol chileno vía RedGol.
       </p>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;" class="reveal">
-      <!-- ANFP Chile -->
-      <div>
-        <p style="font-family:var(--fd);font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--morado3);margin-bottom:0.75rem;">@ANFPChile</p>
-        <a class="twitter-timeline"
-           data-theme="dark"
-           data-height="450"
-           data-chrome="noheader nofooter noborders"
-           href="https://twitter.com/ANFPChile">
-          Cargando tweets...
-        </a>
-      </div>
-      <!-- ESPN Chile -->
-      <div>
-        <p style="font-family:var(--fd);font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--morado3);margin-bottom:0.75rem;">@ESPNChile</p>
-        <a class="twitter-timeline"
-           data-theme="dark"
-           data-height="450"
-           data-chrome="noheader nofooter noborders"
-           href="https://twitter.com/ESPNChile">
-          Cargando tweets...
-        </a>
-      </div>
+    <div class="reveal" style="display:flex;justify-content:center;">
+      <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fredgol&tabs=timeline&width=500&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false"
+        width="500" height="600"
+        style="border:none;overflow:hidden;max-width:100%;border-radius:6px;"
+        scrolling="no" frameborder="0"
+        allowfullscreen="true"
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+      </iframe>
     </div>
   </div>
 </section>
