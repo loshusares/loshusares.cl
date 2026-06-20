@@ -202,13 +202,11 @@ nav.scrolled{top:0;}
   width:100%;
   height:auto;
   display:block;
-  max-height:280px;
-  object-fit:cover;
-  object-position:center;
+  object-fit:contain;
+  background:var(--negro);
 }
 @media(max-width:900px){
   #banner-portada{margin-top:60px;}
-  #banner-portada img{max-height:160px;}
 }
 
 /* ── HERO ── */
@@ -816,7 +814,7 @@ footer{
 
   /* Banner portada */
   #banner-portada{margin-top:60px;}
-  #banner-portada img{max-height:130px;object-position:center;}
+  #banner-portada img{width:100%;}
 
   /* Hero */
   #hero{padding-top:2rem;min-height:auto;}
@@ -895,7 +893,7 @@ footer{
   .nav-brand{font-size:0.85rem;}
 
   /* Banner portada */
-  #banner-portada img{max-height:100px;}
+  #banner-portada img{width:100%;}
 
   /* Hero */
   .hero-escudo{width:95vw;height:95vw;max-width:380px;}
@@ -1491,7 +1489,7 @@ footer{
 <!-- BANNER INFERIOR -->
 <div style="width:100%;line-height:0;">
   <img src="banner_portada.jpg" alt="Club Deportivo Los Húsares · Más que un club, una familia"
-    style="width:100%;height:auto;max-height:280px;object-fit:cover;object-position:center;display:block;">
+    style="width:100%;height:auto;object-fit:contain;display:block;background:#0a0a0a;">
 </div>
 
 <!-- FOOTER -->
